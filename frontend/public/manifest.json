@@ -1,0 +1,41 @@
+{
+  "name": "IT Support Management",
+  "short_name": "IT Support",
+  "description": "IT Maintenance & Support Management System",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#1F3864",
+  "theme_color": "#2E75B6",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect width='192' height='192' fill='%232E75B6' rx='24'/><text y='130' x='30' font-size='120' fill='white'>🔧</text></svg>",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect width='512' height='512' fill='%232E75B6' rx='64'/><text y='360' x='60' font-size='320' fill='white'>🔧</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "shortcuts": [
+    {
+      "name": "New Visit",
+      "short_name": "New Visit",
+      "description": "Start a new site visit",
+      "url": "/visits/new",
+      "icons": [{ "src": "/favicon.ico", "sizes": "96x96" }]
+    },
+    {
+      "name": "My Tickets",
+      "short_name": "Tickets",
+      "description": "View my assigned tickets",
+      "url": "/tickets",
+      "icons": [{ "src": "/favicon.ico", "sizes": "96x96" }]
+    }
+  ]
+}

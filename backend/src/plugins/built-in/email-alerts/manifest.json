@@ -1,0 +1,24 @@
+{
+  "id": "email-alerts",
+  "name": "Email Alerts",
+  "version": "1.0.0",
+  "description": "Send email notifications for tickets, visits and critical issues. Supports SMTP and popular providers.",
+  "author": "Mwamiri IT",
+  "requires": [],
+  "hooks": ["ticket.created", "ticket.resolved", "ticket.assigned", "visit.completed", "issue.critical"],
+  "settings_schema": {
+    "smtp_host":     { "type": "text",     "label": "SMTP Host",         "placeholder": "smtp.gmail.com",  "required": true },
+    "smtp_port":     { "type": "number",   "label": "SMTP Port",         "placeholder": "587",             "required": true },
+    "smtp_user":     { "type": "text",     "label": "SMTP Username",     "placeholder": "you@gmail.com",   "required": true },
+    "smtp_pass":     { "type": "password", "label": "SMTP Password",     "placeholder": "app password",    "required": true },
+    "from_name":     { "type": "text",     "label": "From Name",         "placeholder": "IT Support",      "required": true },
+    "from_email":    { "type": "text",     "label": "From Email",        "placeholder": "noreply@domain.com","required": true },
+    "notify_client_on_ticket":  { "type": "checkbox", "label": "Notify client when ticket is created",   "default": true },
+    "notify_client_on_resolve": { "type": "checkbox", "label": "Notify client when ticket is resolved",  "default": true },
+    "notify_tech_on_assign":    { "type": "checkbox", "label": "Notify technician when assigned",        "default": true },
+    "notify_admin_on_critical": { "type": "checkbox", "label": "Notify admin on critical issues",        "default": true },
+    "admin_email":   { "type": "text",     "label": "Admin Alert Email", "placeholder": "admin@domain.com" }
+  },
+  "category": "notifications",
+  "icon": "📧"
+}

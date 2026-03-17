@@ -1,0 +1,1 @@
+{"id":"custom-fields","name":"Custom Fields","version":"1.0.0","description":"Add extra fields to tickets, visits, equipment and clients.","author":"Mwamiri IT","requires":[],"hooks":["ticket.render","visit.render","equipment.render"],"settings_schema":{},"category":"customisation","icon":"📝"}

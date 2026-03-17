@@ -1,0 +1,40 @@
+# ══════════════════════════════════════════════════════════════════════════════
+# LOCAL DEVELOPMENT OVERRIDE
+# This file is automatically used by docker compose on your local machine.
+# It adds hot-reload, exposes ports directly, and uses dev settings.
+# ══════════════════════════════════════════════════════════════════════════════
+
+version: '3.9'
+
+services:
+
+  # Expose DB port for local tools (TablePlus, DBeaver, pgAdmin)
+  db:
+    ports:
+      - "5432:5432"
+
+  # Backend with live reload
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../docker/Dockerfile.backend.dev
+    volumes:
+      - ./backend/src:/app/src        # Hot reload source
+      - uploads_data:/app/uploads
+    environment:
+      NODE_ENV: development
+    ports:
+      - "5000:5000"                   # Direct API access in dev
+
+  # Frontend with Vite dev server
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../docker/Dockerfile.frontend.dev
+    volumes:
+      - ./frontend/src:/app/src       # Hot reload source
+      - ./frontend/public:/app/public
+    environment:
+      VITE_API_URL: http://localhost:5000
+    ports:
+      - "5173:5173"
