@@ -1,12 +1,22 @@
 FROM node:20-alpine AS builder
+# Set working directory
 WORKDIR /app
+
+# Copy package files and install ALL dependencies (dev + prod)
 COPY package*.json ./
 RUN npm ci
+
+# Copy rest of the app
 COPY . .
+
+# Accept VITE_API_URL from build args/environment (Coolify will inject)
 ARG VITE_API_URL
 ENV VITE_API_URL=$VITE_API_URL
+
+# Build the frontend (devDependencies required!)
 RUN npm run build
 
+# --- Production image ---
 FROM nginx:alpine
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf

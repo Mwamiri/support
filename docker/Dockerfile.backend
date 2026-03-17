@@ -1,9 +1,24 @@
 FROM node:20-alpine
 RUN apk add --no-cache wget
+
+# Set working directory
 WORKDIR /app
+
+# Copy package files and install ALL dependencies (dev + prod)
 COPY package*.json ./
-RUN npm ci --only=production
+RUN npm ci
+
+# Copy rest of the app
 COPY . .
+
+# Create upload directories (if needed by app)
 RUN mkdir -p uploads/photos uploads/plugins uploads/branding
+
+# (Optional) Prune devDependencies for smaller image
+# RUN npm prune --production
+
+# Expose backend port
 EXPOSE 5000
+
+# Start the backend
 CMD ["node", "src/start.js"]
